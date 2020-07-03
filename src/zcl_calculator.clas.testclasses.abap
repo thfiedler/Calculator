@@ -4,13 +4,13 @@ class ltcl_calculator_test definition final for testing
 
   private section.
     methods:
-      test_add for testing raising cx_static_check.
+      test_add_1_1 for testing raising cx_static_check.
 endclass.
 
 
 class ltcl_calculator_test implementation.
 
-  method test_add.
+  method test_add_1_1.
     data(calc) = new zcl_calculator( ).
     data(sum) = calc->add( value_1 = 1  value_2 = 1 ).
 
