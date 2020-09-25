@@ -1,39 +1,36 @@
-class zcl_calculator definition
-  public
-  final
-  create public .
+CLASS zcl_calculator DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-  public section.
-    methods add
-      importing
-        value_1    type i
-        value_2    type i
-      returning
-        value(sum) type i.
-  protected section.
-  private section.
-    methods subtract
-      importing
-        value_1     type i optional
-        value_2     type i optional
-      returning
-        value(diff) type i.
-endclass.
+  PUBLIC SECTION.
+    METHODS add
+      IMPORTING
+        value_1    TYPE i
+        value_2    TYPE i
+      RETURNING
+        VALUE(sum) TYPE i.
+    METHODS subtract
+      IMPORTING
+        value_1     TYPE i OPTIONAL
+        value_2     TYPE i OPTIONAL
+      RETURNING
+        VALUE(diff) TYPE i.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+
+ENDCLASS.
 
 
 
-class zcl_calculator implementation.
+CLASS zcl_calculator IMPLEMENTATION.
 
-  method add.
-    if cl_abap_context_info=>get_user_alias( ) = 'D029681'.
-       sum = 42.
-    else.
-      sum = value_1 + value_2.
-    endif.
-  endmethod.
+  METHOD add.
+    sum = value_1 + value_2.
+  ENDMETHOD.
 
-  method subtract.
+  METHOD subtract.
     diff = value_1 - value_2.
-  endmethod.
+  ENDMETHOD.
 
-endclass.
+ENDCLASS.
