@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_INTF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOINTERF>
+    <CLSNAME>ZIF_CALCULATOR_BADI</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Interface for BAdI: ZCALCULATOR_BADI</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <UNICODE>X</UNICODE>
+   </VSEOINTERF>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_CALCULATOR_BADI</CLSNAME>
+     <CMPNAME>CHECK_BEFORE_ADD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check the input parameters before add operation</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_CALCULATOR_BADI</CLSNAME>
+     <CMPNAME>CHECK_BEFORE_ADD</CMPNAME>
+     <LANGU>늑</LANGU>
+     <DESCRIPT>INTF ZIF_CALCULATOR_BADI</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_CALCULATOR_BADI</CLSNAME>
+     <CMPNAME>CHECK_BEFORE_ADD</CMPNAME>
+     <LANGU>닱</LANGU>
+     <DESCRIPT>[Ĉĥēċķ∙ţĥē∙įŋρűţ∙ρąŗąɱēţēŗş∙ƃēƒŏŗē∙ąƌƌ∙ŏρēŗąţįŏŋ∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_CALCULATOR_BADI</CLSNAME>
+     <CMPNAME>CHECK_BEFORE_SUBTRACT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check the input parameters before subtract operation</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_CALCULATOR_BADI</CLSNAME>
+     <CMPNAME>CHECK_BEFORE_SUBTRACT</CMPNAME>
+     <LANGU>늑</LANGU>
+     <DESCRIPT>INTF ZIF_CALCULATOR_BADI</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZIF_CALCULATOR_BADI</CLSNAME>
+     <CMPNAME>CHECK_BEFORE_SUBTRACT</CMPNAME>
+     <LANGU>닱</LANGU>
+     <DESCRIPT>[Ĉĥēċķ∙ţĥē∙įŋρűţ∙ρąŗąɱēţēŗş∙ƃēƒŏŗē∙şűƃţŗąċţ∙ŏρēŗąţįŏŋ∙∙∙∙∙∙]</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,36 +1,46 @@
-CLASS zcl_calculator DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class zcl_calculator definition
+  public
+  final
+  create public .
 
-  PUBLIC SECTION.
-    METHODS add
-      IMPORTING
-        value_1    TYPE i
-        value_2    TYPE i
-      RETURNING
-        VALUE(sum) TYPE i.
-    METHODS subtract
-      IMPORTING
-        value_1     TYPE i OPTIONAL
-        value_2     TYPE i OPTIONAL
-      RETURNING
-        VALUE(diff) TYPE i.
-  PROTECTED SECTION.
-  PRIVATE SECTION.
+  public section.
+    methods add
+      importing
+        value_1    type i
+        value_2    type i
+      returning
+        value(sum) type i
+      RAISING
+        zcx_calculator_aborted.
+    methods subtract
+      importing
+        value_1     type i optional
+        value_2     type i optional
+      returning
+        value(diff) type i.
+  protected section.
+  private section.
 
-ENDCLASS.
+endclass.
 
 
 
-CLASS zcl_calculator IMPLEMENTATION.
+class zcl_calculator implementation.
 
-  METHOD add.
+  method add.
+    data calculator_badi type ref to zcalculator_badi.
+    get badi calculator_badi.
+    try.
+        call badi calculator_badi->check_before_add exporting value_1 = value_1 value_2 = value_2 .
+      catch zcx_check_failed.
+        raise exception type zcx_calculator_aborted.
+    endtry.
+
     sum = value_1 + value_2.
-  ENDMETHOD.
+  endmethod.
 
-  METHOD subtract.
+  method subtract.
     diff = value_1 - value_2.
-  ENDMETHOD.
+  endmethod.
 
-ENDCLASS.
+endclass.
