@@ -10,22 +10,43 @@ class zcl_calculator definition
         value_2    type i
       returning
         value(sum) type i
-      RAISING
+      raising
         zcx_calculator_aborted.
     methods subtract
       importing
-        value_1     type i optional
-        value_2     type i optional
+        value_1     type i
+        value_2     type i
       returning
         value(diff) type i.
+    methods multiply
+      importing
+        value_1        type i
+        value_2        type i
+      returning
+        value(product) type i.
+    methods constructor
+      importing
+        logging_is_active type boolean optional.
+    methods divide
+      importing
+        value_1         type i
+        value_2         type i
+      returning
+        value(quotient) type decfloat16.
   protected section.
   private section.
-
+    data calculator_log type ref to zcl_calculator_log.
 endclass.
 
 
 
 class zcl_calculator implementation.
+
+  method constructor.
+    if logging_is_active = abap_true.
+      me->calculator_log = new zcl_calculator_log( ).
+    endif.
+  endmethod.
 
   method add.
     data calculator_badi type ref to zcalculator_badi.
@@ -37,10 +58,19 @@ class zcl_calculator implementation.
     endtry.
 
     sum = value_1 + value_2.
+
   endmethod.
 
   method subtract.
     diff = value_1 - value_2.
+  endmethod.
+
+  method multiply.
+    product = value_1 * value_2.
+  endmethod.
+
+  method divide.
+    quotient = value_1 / value_2.
   endmethod.
 
 endclass.
