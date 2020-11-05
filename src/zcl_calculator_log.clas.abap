@@ -6,6 +6,7 @@ class zcl_calculator_log definition
   public section.
   protected section.
   private section.
+    "! Log entry will be added to log db table
     methods add_log_entry
       importing
         operation type zcalculator_operation
