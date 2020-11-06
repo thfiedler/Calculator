@@ -26,7 +26,7 @@ class zcl_calculator_log implementation.
     log_entry-value_1 = value_1.
     log_entry-value_2 = value_2.
 
-    insert zcalculator_log from log_entry.
+    insert zcalculator_log from @log_entry.
 
   endmethod.
 endclass.
