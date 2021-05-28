@@ -56,21 +56,51 @@ class zcl_calculator implementation.
       catch zcx_check_failed.
         raise exception type zcx_calculator_aborted.
     endtry.
-
     sum = value_1 + value_2.
-
+    if me->calculator_log is bound.
+      me->calculator_log->add_log_entry(
+        exporting
+          operation = zif_calculator=>co_operation_add
+          value_1   = value_1
+          value_2   = value_2
+      ).
+    endif.
   endmethod.
 
   method subtract.
     diff = value_1 - value_2.
+    if me->calculator_log is bound.
+      me->calculator_log->add_log_entry(
+        exporting
+          operation = zif_calculator=>co_operation_subtract
+          value_1   = value_1
+          value_2   = value_2
+      ).
+    endif.
   endmethod.
 
   method multiply.
     product = value_1 * value_2.
+    if me->calculator_log is bound.
+      me->calculator_log->add_log_entry(
+        exporting
+          operation = zif_calculator=>co_operation_multiply
+          value_1   = value_1
+          value_2   = value_2
+      ).
+    endif.
   endmethod.
 
   method divide.
     quotient = value_1 / value_2.
+    if me->calculator_log is bound.
+      me->calculator_log->add_log_entry(
+        exporting
+          operation = zif_calculator=>co_operation_divide
+          value_1   = value_1
+          value_2   = value_2
+      ).
+    endif.
   endmethod.
 
 endclass.

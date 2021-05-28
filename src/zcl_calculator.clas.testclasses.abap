@@ -5,7 +5,7 @@ class ltcl_calculator_test definition final for testing
   private section.
     methods:
       test_add_1_to_1 for testing raising cx_static_check,
-    test_subtract_1_from_2 FOR TESTING RAISING cx_static_check.
+      test_subtract_1_from_2 for testing raising cx_static_check.
 endclass.
 
 
@@ -34,5 +34,7 @@ class ltcl_calculator_test implementation.
         msg                  = 'Subtract not working'
     ).
   endmethod.
+
+
 
 endclass.
