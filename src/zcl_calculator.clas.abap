@@ -26,7 +26,7 @@ class zcl_calculator definition
         value(product) type i.
     methods constructor
       importing
-        logging_is_active type boolean optional.
+        logging_is_active type ABAP_BOOLEAN optional.
     methods divide
       importing
         value_1         type i

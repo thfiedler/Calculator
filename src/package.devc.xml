@@ -4,6 +4,7 @@
   <asx:values>
    <DEVC>
     <CTEXT>Calculator Demo</CTEXT>
+    <TPCLASS>X</TPCLASS>
    </DEVC>
   </asx:values>
  </asx:abap>
