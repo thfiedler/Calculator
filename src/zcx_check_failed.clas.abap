@@ -1,7 +1,7 @@
 class ZCX_CHECK_FAILED definition
   public
   inheriting from CX_STATIC_CHECK
-  create private .
+  create public .
 
 public section.
 
