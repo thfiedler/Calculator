@@ -17,22 +17,28 @@ class zcl_calculator definition
         value_1     type i
         value_2     type i
       returning
-        value(diff) type i.
+        value(diff) type i
+      raising
+        zcx_calculator_aborted.
     methods multiply
       importing
         value_1        type i
         value_2        type i
       returning
-        value(product) type i.
+        value(product) type i
+      raising
+        zcx_calculator_aborted.
     methods constructor
       importing
-        logging_is_active type ABAP_BOOLEAN optional.
+        logging_is_active type abap_boolean optional.
     methods divide
       importing
         value_1         type i
         value_2         type i
       returning
-        value(quotient) type decfloat16.
+        value(quotient) type decfloat16
+      raising
+        zcx_calculator_aborted.
   protected section.
   private section.
     data calculator_log type ref to zcl_calculator_log.
@@ -52,7 +58,7 @@ class zcl_calculator implementation.
     data calculator_badi type ref to zcalculator_badi.
     get badi calculator_badi.
     try.
-        call badi calculator_badi->check_before_add exporting value_1 = value_1 value_2 = value_2 .
+        call badi calculator_badi->check_before_add exporting value_1 = value_1 value_2 = value_2.
       catch zcx_check_failed.
         raise exception type zcx_calculator_aborted.
     endtry.
@@ -68,6 +74,13 @@ class zcl_calculator implementation.
   endmethod.
 
   method subtract.
+    data calculator_badi type ref to zcalculator_badi.
+    get badi calculator_badi.
+    try.
+        call badi calculator_badi->check_before_subtract exporting value_1 = value_1 value_2 = value_2.
+      catch zcx_check_failed.
+        raise exception type zcx_calculator_aborted.
+    endtry.
     diff = value_1 - value_2.
     if me->calculator_log is bound.
       me->calculator_log->add_log_entry(
@@ -80,6 +93,13 @@ class zcl_calculator implementation.
   endmethod.
 
   method multiply.
+    data calculator_badi type ref to zcalculator_badi.
+    get badi calculator_badi.
+    try.
+        call badi calculator_badi->check_before_multiply exporting value_1 = value_1 value_2 = value_2.
+      catch zcx_check_failed.
+        raise exception type zcx_calculator_aborted.
+    endtry.
     product = value_1 * value_2.
     if me->calculator_log is bound.
       me->calculator_log->add_log_entry(
@@ -92,6 +112,13 @@ class zcl_calculator implementation.
   endmethod.
 
   method divide.
+    data calculator_badi type ref to zcalculator_badi.
+    get badi calculator_badi.
+    try.
+        call badi calculator_badi->check_before_divide exporting value_1 = value_1 value_2 = value_2.
+      catch zcx_check_failed.
+        raise exception type zcx_calculator_aborted.
+    endtry.
     quotient = value_1 / value_2.
     if me->calculator_log is bound.
       me->calculator_log->add_log_entry(

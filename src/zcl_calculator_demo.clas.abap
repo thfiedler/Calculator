@@ -1,34 +1,34 @@
-class zcl_calculator_demo definition
-  public
-  final
-  create public .
+CLASS zcl_calculator_demo DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-  public section.
+  PUBLIC SECTION.
 
-    interfaces if_oo_adt_classrun .
-  protected section.
-  private section.
-endclass.
+    INTERFACES if_oo_adt_classrun .
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
 
 
 
-class zcl_calculator_demo implementation.
-  method if_oo_adt_classrun~main.
-    data calculator type ref to zcl_calculator.
-    calculator = new zcl_calculator( abap_true ).
+CLASS zcl_calculator_demo IMPLEMENTATION.
+  METHOD if_oo_adt_classrun~main.
+    DATA calculator TYPE REF TO zcl_calculator.
+    calculator = NEW zcl_calculator( abap_true ).
 
-    data(val) = calculator->add( value_1 = 20 value_2 = 20 ).
-    out->write( val ).
+    DATA(val) = calculator->add( value_1 = 20 value_2 = 20 ).
+    out->write( CONV string( val ) ).
 
     val = calculator->subtract( value_1 = 20 value_2 = 2 ).
-    out->write( val ).
+    out->write( CONV string( val ) ).
 
     val = calculator->multiply( value_1 = 20 value_2 = 2 ).
-    out->write( val ).
+    out->write( CONV string( val ) ).
 
     val = calculator->divide( value_1 = 20 value_2 = 2 ).
-    out->write( val ).
+    out->write( CONV string( val ) ).
 
-  endmethod.
+  ENDMETHOD.
 
-endclass.
+ENDCLASS.
