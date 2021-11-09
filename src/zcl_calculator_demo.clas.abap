@@ -39,7 +39,7 @@ CLASS zcl_calculator_demo IMPLEMENTATION.
     ENDTRY.
 
     TRY.
-        val = calculator->divide( value_1 = 20 value_2 = 0 ).
+        val = calculator->divide( value_1 = 20 value_2 = 5 ).
         out->write( CONV string( val ) ).
       CATCH zcx_calculator_aborted.
         out->write( 'Calculation aborted' ).
