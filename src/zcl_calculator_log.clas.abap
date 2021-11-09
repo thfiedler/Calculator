@@ -19,11 +19,8 @@ endclass.
 class zcl_calculator_log implementation.
   method add_log_entry.
     data log_entry type zcalculator_log.
-    try.
-        log_entry-uuid = cl_system_uuid=>create_uuid_x16_static(  ).
-      catch cx_uuid_error.
-        return.
-    endtry.
+
+    log_entry-uuid = cl_system_uuid=>create_uuid_x16_static(  ).
     log_entry-operation = operation.
     log_entry-value_1 = value_1.
     log_entry-value_2 = value_2.
