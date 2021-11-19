@@ -81,22 +81,7 @@ class zcl_calculator implementation.
     get badi calculator_badi.
   endmethod.
 
-  method add.
-    try.
-        call badi calculator_badi->check_before_add exporting value_1 = value_1 value_2 = value_2.
-      catch zcx_check_failed.
-        raise exception type zcx_calculator_aborted.
-    endtry.
-    sum = value_1 + value_2.
-    if me->calculator_log is bound.
-      me->calculator_log->add_log_entry(
-        exporting
-          operation = zif_calculator=>co_operation_add
-          value_1   = value_1
-          value_2   = value_2
-      ).
-    endif.
-  endmethod.
+
 
   method subtract.
     try.
@@ -132,6 +117,22 @@ class zcl_calculator implementation.
     endif.
   endmethod.
 
+  method add.
+    try.
+        call badi calculator_badi->check_before_add exporting value_1 = value_1 value_2 = value_2.
+      catch zcx_check_failed.
+        raise exception type zcx_calculator_aborted.
+    endtry.
+    sum = value_1 + value_2.
+    if me->calculator_log is bound.
+      me->calculator_log->add_log_entry(
+        exporting
+          operation = zif_calculator=>co_operation_add
+          value_1   = value_1
+          value_2   = value_2
+      ).
+    endif.
+  endmethod.
   method divide.
     try.
         call badi calculator_badi->check_before_divide exporting value_1 = value_1 value_2 = value_2.
