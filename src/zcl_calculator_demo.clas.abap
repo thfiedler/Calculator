@@ -1,50 +1,50 @@
-CLASS zcl_calculator_demo DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class zcl_calculator_demo definition
+  public
+  final
+  create public .
 
-  PUBLIC SECTION.
+  public section.
 
-    INTERFACES if_oo_adt_classrun .
-  PROTECTED SECTION.
-  PRIVATE SECTION.
-ENDCLASS.
+    interfaces if_oo_adt_classrun .
+  protected section.
+  private section.
+endclass.
 
 
 
-CLASS zcl_calculator_demo IMPLEMENTATION.
-  METHOD if_oo_adt_classrun~main.
-    DATA calculator TYPE REF TO zcl_calculator.
-    calculator = NEW zcl_calculator( abap_true ).
+class zcl_calculator_demo implementation.
+  method if_oo_adt_classrun~main.
+    data calculator type ref to zif_calculator.
+    calculator = new zcl_calculator( abap_true ).
 
-    TRY.
+    try.
         data(val) = calculator->add( value_1 = 20 value_2 = 20 ).
-        out->write( CONV string( val ) ).
-      CATCH zcx_calculator_aborted.
+        out->write( conv string( val ) ).
+      catch zcx_calculator_aborted.
         out->write( 'Calculation aborted' ).
-    ENDTRY.
+    endtry.
 
-    TRY.
+    try.
         val = calculator->subtract( value_1 = 20 value_2 = 2 ).
-        out->write( CONV string( val ) ).
-      CATCH zcx_calculator_aborted.
+        out->write( conv string( val ) ).
+      catch zcx_calculator_aborted.
         out->write( 'Calculation aborted' ).
-    ENDTRY.
+    endtry.
 
-    TRY.
+    try.
         val = calculator->multiply( value_1 = 20 value_2 = 2 ).
-        out->write( CONV string( val ) ).
-      CATCH zcx_calculator_aborted.
+        out->write( conv string( val ) ).
+      catch zcx_calculator_aborted.
         out->write( 'Calculation aborted' ).
-    ENDTRY.
+    endtry.
 
-    TRY.
-        val = calculator->divide( value_1 = 20 value_2 = 5 ).
-        out->write( CONV string( val ) ).
-      CATCH zcx_calculator_aborted.
+    try.
+        val = calculator->divide( value_1 = 20 value_2 = 0 ).
+        out->write( conv string( val ) ).
+      catch zcx_calculator_aborted.
         out->write( 'Calculation aborted' ).
-    ENDTRY.
+    endtry.
 
-  ENDMETHOD.
+  endmethod.
 
-ENDCLASS.
+endclass.

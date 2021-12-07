@@ -1,19 +1,5 @@
-"! This class provides a very sophisticated calculator that provides the following operations:
-"! <ul>
-"! <li>
-"!   Add
-"! </li>
-"! <li>
-"!   Subtract
-"! </li>
-"! <li>
-"!   Multiply
-"! </li>
-"! <li>
-"!   Divide
-"! </li>
-"! </ul>
-"! It offers enhancement opptions to add custom specific logic via the BADI:
+"! This class implements the calculator
+"! It offers enhancement options to add custom specific logic via the BADI:
 "! {@link zcalculator_badi}
 "! and it provides a log which is stored in DB table: {@link zcalculator_log}
 class zcl_calculator definition
@@ -22,52 +8,27 @@ class zcl_calculator definition
   create public .
 
   public section.
-    "! This method adds two values and returns the sum
-    "! @parameter value_1 | first operand
-    "! @parameter value_2 | second operand
-    "! @parameter sum | Sum of both operands
-    "! @raising zcx_calculator_aborted | Something went wrong
-    methods add
-      importing
-        value_1    type i
-        value_2    type i
-      returning
-        value(sum) type i
-      raising
-        zcx_calculator_aborted.
 
-    "! This method subtracts value_2 from value_1 and and returns the difference
-    methods subtract
-      importing
-        value_1     type i
-        value_2     type i
-      returning
-        value(diff) type i
-      raising
-        zcx_calculator_aborted.
-    methods multiply
-      importing
-        value_1        type i
-        value_2        type i
-      returning
-        value(product) type i
-      raising
-        zcx_calculator_aborted.
+    interfaces zif_calculator.
+
+    aliases: add for zif_calculator~add,
+             subtract for zif_calculator~subtract,
+             multiply for zif_calculator~multiply,
+             divide for zif_calculator~divide.
     methods constructor
       importing
         logging_is_active type abap_boolean optional.
-    methods divide
+    methods square_root
       importing
-        value_1         type i
-        value_2         type i
+        value         type i
       returning
-        value(quotient) type decfloat16
-      raising
-        zcx_calculator_aborted.
+        value(result) type decfloat34.
+
   protected section.
   private section.
     data calculator_log type ref to zcl_calculator_log.
     data calculator_badi type ref to zcalculator_badi.
+
 endclass.
 
 
@@ -83,13 +44,13 @@ class zcl_calculator implementation.
 
 
 
-  method subtract.
+  method zif_calculator~subtract.
     try.
         call badi calculator_badi->check_before_subtract exporting value_1 = value_1 value_2 = value_2.
       catch zcx_check_failed.
         raise exception type zcx_calculator_aborted.
     endtry.
-    diff = value_1 - value_2.
+    difference = value_1 - value_2.
     if me->calculator_log is bound.
       me->calculator_log->add_log_entry(
         exporting
@@ -100,13 +61,15 @@ class zcl_calculator implementation.
     endif.
   endmethod.
 
-  method multiply.
+  method zif_calculator~multiply.
     try.
         call badi calculator_badi->check_before_multiply exporting value_1 = value_1 value_2 = value_2.
       catch zcx_check_failed.
         raise exception type zcx_calculator_aborted.
     endtry.
+
     product = value_1 * value_2.
+
     if me->calculator_log is bound.
       me->calculator_log->add_log_entry(
         exporting
@@ -117,7 +80,7 @@ class zcl_calculator implementation.
     endif.
   endmethod.
 
-  method add.
+  method zif_calculator~add.
     try.
         call badi calculator_badi->check_before_add exporting value_1 = value_1 value_2 = value_2.
       catch zcx_check_failed.
@@ -133,7 +96,7 @@ class zcl_calculator implementation.
       ).
     endif.
   endmethod.
-  method divide.
+  method zif_calculator~divide.
     try.
         call badi calculator_badi->check_before_divide exporting value_1 = value_1 value_2 = value_2.
       catch zcx_check_failed.
@@ -148,6 +111,11 @@ class zcl_calculator implementation.
           value_2   = value_2
       ).
     endif.
+  endmethod.
+
+
+  method square_root.
+    result = sqrt( value ).
   endmethod.
 
 endclass.
