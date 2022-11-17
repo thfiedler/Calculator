@@ -22,7 +22,9 @@ class zcl_calculator definition
       importing
         value         type i
       returning
-        value(result) type decfloat34.
+        value(result) type decfloat34
+      raising
+        zcx_calculator_aborted.
 
   protected section.
   private section.
@@ -35,13 +37,13 @@ endclass.
 
 class zcl_calculator implementation.
 
+
   method constructor.
     if logging_is_active = abap_true.
       me->calculator_log = new zcl_calculator_log( ).
     endif.
     get badi calculator_badi.
   endmethod.
-
 
 
   method zif_calculator~subtract.
@@ -60,6 +62,7 @@ class zcl_calculator implementation.
       ).
     endif.
   endmethod.
+
 
   method zif_calculator~multiply.
     try.
@@ -80,6 +83,7 @@ class zcl_calculator implementation.
     endif.
   endmethod.
 
+
   method zif_calculator~add.
     try.
         call badi calculator_badi->check_before_add exporting value_1 = value_1 value_2 = value_2.
@@ -96,6 +100,8 @@ class zcl_calculator implementation.
       ).
     endif.
   endmethod.
+
+
   method zif_calculator~divide.
     try.
         call badi calculator_badi->check_before_divide exporting value_1 = value_1 value_2 = value_2.
@@ -115,7 +121,13 @@ class zcl_calculator implementation.
 
 
   method square_root.
-    result = sqrt( value ).
+    if value > 0.
+      result = sqrt( value ).
+    else.
+      raise exception type zcx_calculator_aborted.
+    endif.
   endmethod.
+
+
 
 endclass.

@@ -11,12 +11,15 @@ class zcl_calculator_log definition
         value_2   type i.
   protected section.
   private section.
+    methods get_log_by_timestamp.
 
-endclass.
+ENDCLASS.
 
 
 
-class zcl_calculator_log implementation.
+CLASS ZCL_CALCULATOR_LOG IMPLEMENTATION.
+
+
   method add_log_entry.
     data log_entry type zcalculator_log.
 
@@ -28,4 +31,9 @@ class zcl_calculator_log implementation.
 
     insert zcalculator_log from @log_entry.
   endmethod.
-endclass.
+
+
+  method get_log_by_timestamp.
+    "select from zcalculator_log_view fields * where Timestamp = @i_timestamp into table @log_view_entries.
+  endmethod.
+ENDCLASS.

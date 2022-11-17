@@ -8,11 +8,13 @@ class zcl_calculator_demo definition
     interfaces if_oo_adt_classrun .
   protected section.
   private section.
-endclass.
+ENDCLASS.
 
 
 
-class zcl_calculator_demo implementation.
+CLASS ZCL_CALCULATOR_DEMO IMPLEMENTATION.
+
+
   method if_oo_adt_classrun~main.
     data calculator type ref to zif_calculator.
     calculator = new zcl_calculator( abap_true ).
@@ -46,5 +48,4 @@ class zcl_calculator_demo implementation.
     endtry.
 
   endmethod.
-
-endclass.
+ENDCLASS.

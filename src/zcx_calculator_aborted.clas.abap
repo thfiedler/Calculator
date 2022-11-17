@@ -14,11 +14,11 @@ class zcx_calculator_aborted definition
         !previous like previous optional .
   protected section.
   private section.
-endclass.
+ENDCLASS.
 
 
 
-class zcx_calculator_aborted implementation.
+CLASS ZCX_CALCULATOR_ABORTED IMPLEMENTATION.
 
 
   method constructor ##ADT_SUPPRESS_GENERATION.
@@ -32,4 +32,4 @@ class zcx_calculator_aborted implementation.
       if_t100_message~t100key = textid.
     endif.
   endmethod.
-endclass.
+ENDCLASS.

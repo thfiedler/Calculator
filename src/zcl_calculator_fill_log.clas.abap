@@ -8,11 +8,13 @@ class zcl_calculator_fill_log definition
     interfaces if_oo_adt_classrun .
   protected section.
   private section.
-endclass.
+ENDCLASS.
 
 
 
-class zcl_calculator_fill_log implementation.
+CLASS ZCL_CALCULATOR_FILL_LOG IMPLEMENTATION.
+
+
   method if_oo_adt_classrun~main.
     data calculator type ref to zcl_calculator.
     data val_tmp type int4.
@@ -49,5 +51,4 @@ class zcl_calculator_fill_log implementation.
 *      endtry.
     enddo.
   endmethod.
-
-endclass.
+ENDCLASS.

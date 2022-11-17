@@ -9,6 +9,7 @@
     <DDTEXT>Supported operations of calculator</DDTEXT>
     <DTELMASTER>E</DTELMASTER>
     <REFKIND>D</REFKIND>
+    <ABAP_LANGUAGE_VERSION>5</ABAP_LANGUAGE_VERSION>
    </DD04V>
    <I18N_LANGS>
     <LANGU>늑</LANGU>

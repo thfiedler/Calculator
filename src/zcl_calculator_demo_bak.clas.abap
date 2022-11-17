@@ -12,7 +12,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_calculator_demo_bak IMPLEMENTATION.
+CLASS ZCL_CALCULATOR_DEMO_BAK IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
     DATA calculator TYPE REF TO zcl_calculator.
     calculator = NEW zcl_calculator( abap_true ).
@@ -46,5 +48,4 @@ CLASS zcl_calculator_demo_bak IMPLEMENTATION.
     ENDTRY.
 
   ENDMETHOD.
-
 ENDCLASS.
