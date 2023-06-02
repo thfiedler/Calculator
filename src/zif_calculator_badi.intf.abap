@@ -1,14 +1,35 @@
-interface ZIF_CALCULATOR_BADI
+interface zif_calculator_badi
   public .
 
 
-  interfaces IF_BADI_INTERFACE .
+  interfaces if_badi_interface .
 
-  methods CHECK_BEFORE_ADD
+  methods check_before_add
     importing
-      !VALUE_1 type I
-      !VALUE_2 type I
+      !value_1 type i
+      !value_2 type i
     raising
-      ZCX_CHECK_FAILED .
-  methods CHECK_BEFORE_SUBTRACT .
+      zcx_check_failed .
+
+  methods check_before_subtract
+    importing
+      !value_1 type i
+      !value_2 type i
+    raising
+      zcx_check_failed .
+
+  methods check_before_multiply
+    importing
+      !value_1 type i
+      !value_2 type i
+    raising
+      zcx_check_failed .
+
+  methods check_before_divide
+    importing
+      !value_1 type i
+      !value_2 type i
+    raising
+      zcx_check_failed .
+
 endinterface.
