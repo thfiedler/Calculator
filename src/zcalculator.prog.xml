@@ -16,6 +16,48 @@
      <ENTRY>Calculator Application</ENTRY>
      <LENGTH>22</LENGTH>
     </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_ADD</KEY>
+     <ENTRY>Add</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_DIV</KEY>
+     <ENTRY>Divide</ENTRY>
+     <LENGTH>14</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_MUL</KEY>
+     <ENTRY>Multiply</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_OP1</KEY>
+     <ENTRY>Operand 1</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_OP2</KEY>
+     <ENTRY>Operand 2</ENTRY>
+     <LENGTH>17</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_SQRT</KEY>
+     <ENTRY>Square Root</ENTRY>
+     <LENGTH>19</LENGTH>
+    </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_SUB</KEY>
+     <ENTRY>Subtract</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
    </TPOOL>
    <I18N_TPOOL>
     <item>

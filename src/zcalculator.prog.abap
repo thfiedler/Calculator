@@ -7,35 +7,46 @@
 *&---------------------------------------------------------------------*
 report zcalculator.
 
-parameters value_1 type i.
+parameters:
+  p_op1 type i default 1 obligatory.
 
-parameters: op_add radiobutton group ops default 'X',
-            op_sub radiobutton group ops,
-            op_mul radiobutton group ops,
-            op_div radiobutton group ops.
+selection-screen skip.
 
-parameters value_2 type i.
+parameters:
+  p_add  type abap_bool radiobutton group oprs,
+  p_sub  type abap_bool radiobutton group oprs,
+  p_mul  type abap_bool radiobutton group oprs,
+  p_div  type abap_bool radiobutton group oprs,
+  p_sqrt type abap_bool radiobutton group oprs.
+
+selection-screen skip.
+
+parameters p_op2 type i default 1 obligatory.
+
 
 start-of-selection.
 
-  data calculator type ref to zcl_calculator.
+  data:
+    calculator type ref to zif_calculator,
+    result     type decfloat16.
 
-  calculator = new zcl_calculator( 'X' ).
+  calculator = zcl_calculator=>create( abap_true ).
 
-  if op_add = abap_true.
-    data(sum) = calculator->add( value_1 = value_1 value_2 = value_2 ).
-    write: / value_1 , '+' , value_2 , '=' , sum.
+  try.
+      case abap_true.
+        when p_add.
+          result = calculator->add( value_1 = p_op1 value_2 = p_op2 ).
+        when p_sub.
+          result = calculator->subtract( value_1 = p_op1 value_2 = p_op2 ).
+        when p_mul.
+          result = calculator->multiply( value_1 = p_op1 value_2 = p_op2 ).
+        when p_div.
+          result = calculator->divide( value_1 = p_op1 value_2 = p_op2 ).
+        when p_sqrt.
+          result = calculator->square_root( value = p_op1 ).
+      endcase.
+    catch zcx_calculator_aborted into data(cx1).
+      message cx1->get_text( ) type 'I'.
+  endtry.
 
-  elseif op_sub = abap_true.
-    data(diff) = calculator->subtract( value_1 = value_1 value_2 = value_2 ).
-    write: / value_1 , '-' , value_2 , '=' , diff.
-
-  elseif op_mul = abap_true.
-    data(prod) = calculator->multiply( value_1 = value_1 value_2 = value_2 ).
-    write: / value_1 , '*' , value_2 , '=' , prod.
-
-  elseif op_div = abap_true.
-    data(quot) = calculator->divide( value_1 = value_1 value_2 = value_2 ).
-    write: / value_1 , '/' , value_2 , '=' , quot.
-
-  endif.
+  write: /, 'Result:', result.
